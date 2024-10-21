@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Fitness Tracking System</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?fitness,workout') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            text-align: center;
+            background-color: #cb94ea;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #fff;
+            font-size: 2em;
+        }
+
+        .register-form {
+            text-align: left;
+            padding: 20px;
+        }
+
+        .register-form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #b949b9;
+        }
+
+        .register-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 1em;
+        }
+
+        .register-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #cb94ea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .register-form button:hover {
+            background-color: #cb94ea;
+            transform: scale(1.05);
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 1em;
+            text-align: center;
+            color: #cb94ea;
+        }
+
+        p {
+            text-align: center;
+            color: #333;
+        }
+
+        a {
+            color: #cb94ea;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Register</h1>
+        </header>
+        <div class="register-form">
+            <h2>Create an Account</h2>
+            <form id="registrationForm">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter Username" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter Email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter Password" required>
+
+                <button type="submit">Register</button>
+            </form>
+            <p id="message" class="message"></p>
+            <p>Already registered? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Array to hold registered usernames
+        const registeredUsers = ['user1', 'user2', 'user3'];
+
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+
+            // Check if the user is already registered
+            const isRegistered = checkIfRegistered(username);
+
+            if (isRegistered) {
+                document.getElementById('message').textContent = "You are already registered. Please login.";
+                document.getElementById('message').style.color = 'red';
+            } else {
+                // Register the user
+                registerUser(username);
+                alert('Registration successful!');
+                window.location.href = 'index.html'; // Redirect to index.html
+            }
+        });
+
+        function checkIfRegistered(username) {
+            return registeredUsers.includes(username);
+        }
+
+        function registerUser(username) {
+            registeredUsers.push(username); // Add new user to the list
+        }
+    </script>
+</body>
+</html>

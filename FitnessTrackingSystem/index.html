@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Fitness Tracking System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fitness Tracking System</h1>
+        </header>
+        <div class="fitness-plan-form">
+            <h2>Create Your Fitness Plan</h2>
+
+            <label for="planName">Fitness Plan Name</label>
+            <input type="text" id="planName" placeholder="Enter Fitness Plan Name">
+
+            <!-- Workout Intensity -->
+            <div class="section">
+                <h3>Workout Intensity</h3>
+                <input type="range" min="1" max="10" id="intensitySlider" value="5" />
+                <p>Intensity: <span id="intensityValue">5</span>/10</p>
+            </div>
+
+            <!-- Workout Type -->
+            <div class="section">
+                <h3>Workout Type</h3>
+                <select id="workoutType">
+                    <option value="strength">Strength</option>
+                    <option value="cardio">Cardio</option>
+                    <option value="yoga">Yoga</option>
+                    <option value="HIIT">HIIT</option>
+                </select>
+            </div>
+
+            <!-- Goal Selection -->
+            <div class="section">
+                <h3>Your Fitness Goals</h3>
+                <label><input type="checkbox" value="Weight Loss"> Weight Loss</label><br />
+                <label><input type="checkbox" value="Muscle Building"> Muscle Building</label><br />
+                <label><input type="checkbox" value="Flexibility"> Flexibility</label><br />
+                <label><input type="checkbox" value="Endurance"> Endurance</label><br />
+            </div>
+
+            <!-- Plan Duration -->
+            <div class="section">
+                <h3>Plan Duration (Weeks)</h3>
+                <input type="number" id="duration" min="1" max="52" value="4">
+            </div>
+
+            <!-- Milestone Setup -->
+            <div class="section">
+                <h3>Set Milestones</h3>
+                <input type="text" placeholder="First Milestone" id="milestone1"><br>
+                <input type="text" placeholder="Second Milestone" id="milestone2">
+            </div>
+
+            <!-- Reminders -->
+            <div class="section">
+                <h3>Set Daily Reminders</h3>
+                <input type="time" id="reminderTime"><br>
+                <label><input type="checkbox" id="notificationToggle"> Enable Notifications</label>
+            </div>
+
+            <!-- Workout Calendar -->
+            <div class="section">
+                <h3>Workout Calendar</h3>
+                <table>
+                    <tr>
+                        <th>Day</th>
+                        <th>Workout</th>
+                    </tr>
+                    <tr>
+                        <td>Monday</td>
+                        <td><input type="text" placeholder="Strength Training"></td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td><input type="text" placeholder="Cardio"></td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td><input type="text" placeholder="Yoga"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Weekly Progress -->
+            <div class="section">
+                <h3>Weekly Progress Report</h3>
+                <div id="weeklyReport">
+                    <p>Total Workouts Completed: 5</p>
+                    <p>Calories Burned: 2,500 kcal</p>
+                    <p>Goals Achieved: 50%</p>
+                </div>
+            </div>
+
+            <!-- Challenges -->
+            <div class="section">
+                <h3>Fitness Challenges</h3>
+                <select id="challenge">
+                    <option value="30day">30-Day Fitness Challenge</option>
+                    <option value="5km">Run 5km in 5 Days</option>
+                </select>
+                <button onclick="joinChallenge()">Join Challenge</button>
+            </div>
+
+            <button onclick="createPlan()">Create Plan</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

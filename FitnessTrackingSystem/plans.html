@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Fitness Plans</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>All Fitness Plans</h1>
+        </header>
+
+        <div id="plansList">
+            <!-- Plans will be populated here -->
+        </div>
+
+        <button onclick="goBack()">Create Another Plan</button>
+    </div>
+
+    <script>
+        function loadPlans() {
+            // Fetch plans from localStorage
+            const plans = JSON.parse(localStorage.getItem('fitnessPlans')) || [];
+
+            const plansList = document.getElementById('plansList');
+            plansList.innerHTML = '';
+
+            if (plans.length === 0) {
+                plansList.innerHTML = '<p>No plans created yet.</p>';
+                return;
+            }
+
+            // Display all the plans
+            plans.forEach((plan, index) => {
+                const planElement = document.createElement('div');
+                planElement.classList.add('plan');
+                planElement.innerHTML = `
+                    <h2>Plan #${index + 1}: ${plan.planName}</h2>
+                    <p><strong>Workout Type:</strong> ${plan.workoutType}</p>
+                    <p><strong>Intensity:</strong> ${plan.intensity}</p>
+                    <p><strong>Duration:</strong> ${plan.duration} weeks</p>
+                    <p><strong>Goals:</strong> ${plan.goals.join(', ')}</p>
+                    <p><strong>Milestones:</strong> ${plan.milestone1}, ${plan.milestone2}</p>
+                    <p><strong>Reminder Time:</strong> ${plan.reminderTime}</p>
+                    <p><strong>Notifications Enabled:</strong> ${plan.notificationEnabled ? 'Yes' : 'No'}</p>
+                `;
+                plansList.appendChild(planElement);
+            });
+        }
+
+        function goBack() {
+            window.location.href = 'index.html'; // Adjust this if needed
+        }
+
+        // Load plans on page load
+        window.onload = loadPlans;
+    </script>
+</body>
+</html>
